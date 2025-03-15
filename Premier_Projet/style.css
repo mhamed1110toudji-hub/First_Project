@@ -1,0 +1,731 @@
+ @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin:0%;
+    padding:0%;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/*========= body of login page ========= */
+
+#Login-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('images/reseau.jpg');
+    background-position: center;
+    background-size: cover;
+    
+}
+.Login-section{
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    width: 500px;
+    border-radius: 20px;
+
+   
+}
+section h1{
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#Retour i{
+  position: fixed;
+  margin-left: 1px;
+  margin-top: -15%;
+  
+}
+
+.input-id{
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    
+}
+  
+.input-id i {
+    position: absolute;
+    top:50%;
+    right:15px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.2);
+    width:45px;
+    
+}
+.input-mdp i {
+    position: absolute;
+    top: 25px;
+    right: 47px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.2);
+    width:52px;
+}
+    
+    
+.input-id input, .input-mdp input{
+    width:100%;
+    padding:10px;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, 0.2);
+    color:white;
+    padding-right: 60px;
+    padding-left: 20px;
+}
+input::placeholder{
+    color: rgba(255, 255, 255, 0.5)
+    
+
+}
+.input-mdp{
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+.mdp-forget{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size:15px;
+}
+.mdp-forget a{
+    color: white;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.mdp-forget a:hover{
+    color:#095ae7;
+    text-decoration: underline;}
+
+#Login-btn{
+   width:100%;
+   padding:10px;
+   border-radius: 25px;
+   background-color:rgba(255, 255, 255, 0.2);
+   color:white;
+   font-size: 16px ;
+   background:transparent;
+   outlibe:none;
+   border:2px solid rgba(255, 255, 255, 0.2);
+   cursor:pointer;
+}
+#Login-btn:hover{
+    background-color: rgba(255, 255, 255, 0.984);
+    color:#090909;
+    font-weight: bold;
+}
+
+.new-compte{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-left: 25%;
+    margin-top: 20px;
+    color:#f0f1f3;
+}
+.new-compte a{
+    color: #FFF;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.new-compte a:hover{
+    color:#095ae7;
+    text-decoration: underline;
+}
+/* ===== Page d’inscription ===== */
+
+#Inscription-body{
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: 160vh;
+    background: url('images/reseau.jpg');
+    background-position: center;
+    background-size: 250vh;
+}
+
+.Inscription-section{
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    height: 150%;
+    width: 480px;
+    border-radius: 20px;
+    color: white;
+}
+
+H1{
+    text-align: center;
+    margin-bottom: 7%;
+}
+
+.case > .input-nom ,.input-prenom,.date-de-naissance,.adress,.lieu-de-residance,.matricule,.niveau,.departement,.specialité,.input-email,.input-id,.input-mdp,.input-mdp2{
+    position: relative; 
+    width: 100%;
+    margin-bottom:15px;
+}
+.case > .input-nom input ,.input-prenom input,.date-de-naissance input,.adress input,.matricule input,.input-email input,.input-id input,.input-mdp input,.input-mdp2 input{
+    width:90%;
+    height:40px;
+    margin-top:5px;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, 0.2);
+    color:white;
+    padding-right: 60px;
+    padding-left: 20px;
+}
+.case > .input-nom i,.input-prenom i,.date-de-naissance i,.adress i,.matricule i,.input-email i,.input-id i{
+position: absolute;
+    top:55%;
+    right:50px;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    width:45px;
+}
+.case > .input-mdp i,.input-mdp2 i{
+    position: absolute;
+    top:35%;
+    right: 47px;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    width:52px;
+}
+
+.case > .lieu-de-residance select,.niveau select,.departement select,.specialité select{
+    width:80%;
+    height:40px;
+    margin-top:5px;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, 0.2);
+    color:white;
+    padding-left: 30px;
+    padding-right: 10%;
+}
+
+.case > .lieu-de-residance i,.niveau i,.departement i,.specialité i{
+    position:absolute;
+    top:55%;
+    right: 110px;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    width:45px;
+
+}
+
+.conditions {
+    margin-top: 7%;
+    text-align: center;
+}
+
+#Inscription-btn{
+    justify-content: center;
+    height: 3%;
+    width: 30%;
+    border-radius: 50px;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255,0.3);
+}
+.btn-register{
+    
+    margin-top: 7%;
+    margin-left: 35%;
+}
+
+.already-account{
+     margin-top: 7%;
+    text-align: center;
+}
+
+.conditions a{
+    color:white;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.5s;
+}
+.already-account a{
+    color:white;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.5s;
+}
+.conditions a:hover,.already-account a:hover{
+    color:blue
+}
+
+/* ======== Page D'Acceuil ========= */
+
+#Page_Acceuil{
+    background-image: url(images/ingm.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 70vh; 
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: black;
+  border-radius: 30px;
+}
+
+header{
+    position:fixed;
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 20%;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+header .logo{
+    position:absolute;
+    margin-top: -5%;
+    padding-left: 2%;
+    font-weight: 100;
+    font-size: 17px;
+    color:rgb(10, 1, 247)
+}
+header .logo img{
+  position:absolute;
+  width: 60px;
+  margin-left:25%;
+  margin-top: 15%;
+}
+
+.nouveau-compte{
+  margin-left: 65%;
+  margin-top:-4%;
+}
+.new-inscription{
+  padding-right: 20px;
+}
+
+.input-search {
+    position:fixed;
+    display: flex;
+    margin: 0px 1180px ;
+    margin-top: -4%;
+}
+.input-search input{
+    position: relative;
+    width: 230px;
+    height: 40px;
+    border: 2px solid rgba(6, 6, 6, 0.85);
+    box-shadow: rgba(0,0,0,0.8) 0px 0px 10px;
+    border-radius: 50px;
+    outline: none;
+    padding-left: 7%;
+    padding-right: 20%;
+}
+.input-search i{
+    position: absolute;
+    margin-top: 18px;
+    margin-left: 190px;
+}
+.input-search input::placeholder{
+    color: rgba(22, 22, 22,0.5);
+}
+
+
+
+.menu{
+    position:absolute;
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+    padding:2% 0px;
+    margin-left:170px;
+    margin-right:0px;
+    justify-content: center;
+    
+    
+}
+.menu li{
+    position: flex;
+    margin:0;
+    text-align: center;
+    justify-content: center;
+    padding: 0px 0px;
+    
+}
+.menu a{
+    position: relative;
+    display: inline-block;
+    padding:0px 20px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    color: rgba(255, 255, 255);
+    transition: all 1s ease;
+}
+
+/*  change la couleur du texte au survol */
+.menu #list1::after,.menu #list2::after,.menu #list3::after,.menu #list4::after,.menu #list5::after, #list6::after,.menu #list7::after,.menu #list8::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right:0%;
+  bottom: -8px;
+  width: 90%;
+  height: 5px;
+  background-color: rgb(248, 82, 27);
+  transform: scaleX(0);
+  transform-origin: center; /* la ligne s’étend depuis le centre */
+  transition: transform 1.5s ease;
+  border-radius: 50px; /*  px arrondi sur les bords et % arrondi les bords du haut et bas  */
+}
+
+/* Animation au survol */
+.menu #list1:hover::after{
+  transform: scaleX(0.9); /* la ligne s’étend dans les deux sens */  
+}
+.menu #list2:hover::after{
+    transform: scaleX(2.25);
+}
+.menu #list3:hover::after{
+    transform: scaleX(1.3);
+}
+.menu #list4:hover::after{
+     transform: scaleX(1.7);
+}
+.menu #list5:hover::after{
+     transform: scaleX(0.9);
+}
+
+.menu #list6:hover::after{
+     transform: scaleX(1.65);
+}
+.menu #list7:hover::after{
+     transform: scaleX(0.9);
+}
+.menu #list8:hover::after{
+     transform: scaleX(0.95);
+}
+
+.menu #list1:hover,.menu #list2:hover,.menu #list3:hover,.menu #list4:hover,.menu #list5:hover,.menu #list6:hover,.menu #list7:hover,.menu #list8:hover {
+  color:rgb(0, 21, 255);
+  
+}
+
+.submenu1 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 7%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+  transition: opacity 22s ease, transform 22s ease, visibility 0s linear 6s;
+}
+
+/* Quand on survole le li parent */
+.list:hover .submenu1 {
+  display: block;
+  transition-delay: 10s;
+}
+
+/* Liens du sous-menu */
+.submenu1 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.submenu1 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+
+.submenu2 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 22%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  transition: opacity 5s ease, transform 5s ease, visibility 10s linear 5s;
+}
+.list:hover .submenu2 {
+  display: block;
+  transition-delay: 10s;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0); 
+}
+
+/* Liens du sous-menu */
+.submenu2 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+}
+
+.submenu2 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.submenu3 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 37.7%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+  transition: opacity 22s ease, transform 22s ease, visibility 0s linear 6s;
+}
+
+/* Quand on survole le li parent */
+.list:hover .submenu3 {
+  display: block;
+  transition-delay: 10s;
+}
+
+/* Liens du sous-menu */
+.submenu3 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.submenu3 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+
+.submenu4 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+  transition: opacity 22s ease, transform 22s ease, visibility 0s linear 6s;
+}
+
+/* Quand on survole le li parent */
+.list:hover .submenu4 {
+  display: block;
+  transition-delay: 10s;
+}
+
+/* Liens du sous-menu */
+.submenu4 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.submenu4 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+
+.submenu5 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 61%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+  transition: opacity 22s ease, transform 22s ease, visibility 0s linear 6s;
+}
+
+/* Quand on survole le li parent */
+.list:hover .submenu5 {
+  display: block;
+  transition-delay: 10s;
+}
+
+/* Liens du sous-menu */
+.submenu5 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.submenu5 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+
+.submenu6 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 75%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+  transition: opacity 22s ease, transform 22s ease, visibility 0s linear 6s;
+}
+
+/* Quand on survole le li parent */
+.list:hover .submenu6 {
+  display: block;
+  transition-delay: 10s;
+}
+
+/* Liens du sous-menu */
+.submenu6 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.submenu6 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+
+.submenu7 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 7%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+  transition: opacity 22s ease, transform 22s ease, visibility 0s linear 6s;
+}
+
+/* Quand on survole le li parent */
+.list:hover .submenu7 {
+  display: block;
+  transition-delay: 10s;
+}
+
+/* Liens du sous-menu */
+.submenu7 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.submenu7 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+.submenu8 {
+  display: none;
+  position: absolute;
+  top: 70px; /* distance sous le mot */
+  left: 7%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 50;
+  transition: opacity 22s ease, transform 22s ease, visibility 0s linear 6s;
+}
+
+/* Quand on survole le li parent */
+.list:hover .submenu8 {
+  display: block;
+  transition-delay: 10s;
+}
+
+/* Liens du sous-menu */
+.submenu8 li a {
+  color: black;
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.submenu8 li a:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}
+
+/* ======= middel page =======*/
+
+.middel-text {
+  position: absolute;
+  top: calc(50% + 7%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 0;
+  width: 100%;
+}
+ 
+
+.middel-text #middel-text-home{
+  font-size: 120px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 8px;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+  
+
