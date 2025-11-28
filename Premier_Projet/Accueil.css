@@ -1,0 +1,947 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #222;
+}
+
+html {
+    scroll-behavior: smooth;
+    
+}
+
+/* ========= HEADER ========= */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+    z-index: 1000;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: -100px;
+}
+span{
+    color: #1200b0;
+}
+
+.logo img {
+    width: 55px;
+}
+
+.logo h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fe6f02;
+}
+
+.nav {
+    position: fixed;
+    margin-left: 19%;
+}   
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+/* Barre centrée avant hover */
+.nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #1200b0; /* Ta couleur */
+    transition: width 0.3s ease;
+    border-radius: 50px;
+}
+
+/* Barre qui s'étend vers les côtés */
+.nav ul li a:hover::after {
+    width: 100%;
+}
+
+.header-buttons {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    margin-left:75%;
+}
+.header-buttons a {
+    margin-left: 10px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-outline {
+    border: 2px solid #1200b0;
+    color: #ff7300;
+}
+
+.btn-outline:hover {
+    background: #1200b0;
+    color: #fff;
+}
+
+.btn-primary {
+    border: 2px solid #1200b0;
+    background: #1200b0;
+    color: #fff;
+    
+}
+.btn-primary:hover {
+    border: 2px solid #1200b0;
+    background: #fffefe;
+    color: #ff7300;
+}
+
+/* Positionner le bouton Explore en bas du hero */
+#big-btn {
+    position: absolute;        /* se place par rapport à .hero */
+    top: 450px;             /* distance du bas */
+    left: 50%;                /* centrer */
+    transform: translateX(-50%);
+    background: transparent;      /* même style que ton bouton primary */
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    width: 200%;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Style du lien à l’intérieur */
+#big-btn .big-a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Hover */
+#big-btn:hover {
+    background:transparent;
+    backdrop-filter: blur(10px);
+}
+
+/* Container menu */
+.menu-item {
+    position: relative;
+}
+
+/* Dropdown caché au départ */
+.dropdown {
+    position: absolute;
+    top: 45px; /* sous le menu */
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 180px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 999;
+    animation: fadeIn 0.25s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%,10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.dropdown a {
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown a:hover {
+    background: #f0f0f0;
+}
+/*=========page Floue========*/
+/* Couche de flou */
+.page-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 500; /* sous le menu mais au-dessus du reste */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Quand active → flou visible */
+.page-blur.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+
+/* ========= HERO ========= */
+.hero {
+    height: 90vh;
+    background-image: url("images/ingm.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-top: 80px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-content h1 {
+    font-size: 70px;
+    font-weight: 800;
+}
+
+.hero-content p {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translate(-50%, -40%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* ========= SECTIONS GENERALES ========= */
+
+section {
+    padding: 80px 0;
+}
+
+h2 {
+    margin-top: 5%;
+    margin-left: -10%;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 40px;
+}
+
+p {
+    margin-top: 5%;
+    margin-left: 10%;
+    line-height: 1.7;
+    font-size: 28px;
+}
+
+/* ========= ABOUT ========= */
+#about-section .container {
+    width: 75%;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* ========= PROGRAMMES ========= */
+.programs {
+    background: #fff;
+}
+
+.programs h2 {
+    text-align: center;
+    margin-left: -2%;
+}
+
+.program-grid {
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+
+.program-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+
+.program-card:hover {
+    transform: translateY(-5px);
+    border-color: #b00000;
+}
+
+/* ========= CAMPUS LIFE ========= */
+.campus-grid {
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+.campus-life h2 {
+    margin-left: -3%;
+    text-align: center;
+}
+
+.campus-item {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #ddd;
+}
+
+.campus-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.campus-item h3 {
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    color: #222;
+}
+
+.campus-item:hover {
+    transform: translateY(-5px);
+    border-color: #b00000;
+}
+
+/* ========= NEWS ========= */
+.news-grid {
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.news h2{
+    margin-left: 0%;
+    text-align: center;
+}
+
+.news-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    border-color: #b00000;
+}
+
+.news-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #b00000;
+    font-weight: 600;
+}
+
+/* ========= WHY US ========= */
+.why-grid {
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+.why-us h2{ 
+    margin-left: 0%;
+    text-align: center;
+}
+
+.why-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    border-color: #b00000;
+}
+
+/* ========= PARTNERS ========= */
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.partner-logos img {
+    width: 150px;
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.partner-logos img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* ========= FOOTER ========= */
+.footer {
+    text-align: center;
+    padding: 25px 0;
+    background: #1200b0;
+    color: white;
+    font-size:5px;
+    width: 100%;
+    height: 70px;
+}
+.footer p {
+    text-align: center;
+    margin: 0;
+    opacity: 0.85;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+
+/* ---- MODE NUIT ---- */
+
+.theme-btn {
+    position:fixed;
+    margin-left: 89%;;
+    padding: 8px 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    background: #222;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.theme-btn:hover {
+    background: #444;
+}
+
+body.dark-mode {
+    background-color: #0d0d0d;
+    color: white;
+}
+
+body.dark-mode .hamburger{
+    color: white;
+}
+/* NAV mode nuit */
+body.dark-mode .nav ul li a {
+    color: white;
+}
+
+body.dark-mode .nav ul li a::after {
+    background: white;
+}
+
+body.dark-mode .header {
+    background: rgba(20, 20, 20, 0.8);
+    border-bottom: 1px solid #444;
+    color: #ddd;
+}
+
+body.dark-mode .about-section .container {
+    background-color: #0d0d0d;
+    color: #ccc;
+}
+ body.dark-mode .programs{
+    background: #121212;
+    color: #ddd;
+ }
+body.dark-mode .programs .program-card,
+body.dark-mode .campus-life .campus-item,
+body.dark-mode .news .news-card,
+body.dark-mode .why-us .why-card {
+    background: #1a1a1a;
+    color: #ddd;
+}
+/* FOOTER mode nuit */
+body.dark-mode .footer {
+    background: #111;
+    color: #ddd;
+    box-shadow: 0 -4px 15px rgba(255,255,255,0.1);
+}
+
+/* HERO IMAGE mode nuit */
+body.dark-mode .hero {
+    background-image: url("Images/dark_ingm.png"); /* Image de nuit */
+}
+
+
+
+/* ========= RESPONSIVE ========= */
+
+/* ----- Hamburger invisible par défaut ----- */
+.hamburger {
+    display: none;
+    font-size: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+}
+
+/* ---------------------- MEDIA QUERY à 1346px ---------------------- */
+@media (max-width: 1346px) {
+
+    /* On centre logo + texte */
+    .header-content {
+        justify-content: center;
+        position: relative;
+    }
+
+    /* On cache le menu principal */
+    .nav {
+        display: none;
+        position: absolute;
+        top: 90px;
+        left: 1%;
+        transform: translateX(-50%);
+        width: 50%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        animation: fadeInMenu 0.4s ease forwards;
+    }
+
+    /* Le hamburger devient visible */
+    .hamburger {
+        display: block;
+        position: absolute;
+        left: 25px;
+        top: 20px;
+    }
+
+    /* On place le bouton mode nuit à droite */
+    #themeToggle {
+        position: absolute;
+        right:-40px;
+        top: 10px;
+    }
+    .header-buttons{
+        position: absolute;
+        right: 1px;
+        top: 10px;
+    }
+    .header-buttons .btn-outline{
+         position: absolute;
+        right: 1px;
+        top: 20px;
+    }
+    .header-buttons .btn-primary{
+         position: absolute;
+        right: 1px;
+        top: -19px;
+    }
+
+    /* Le menu est désormais vertical */
+    .nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav ul li a {
+        font-size: 20px;
+        padding: 10px 0;
+        display: block;
+    }
+
+    /* Dropdown : on montre tout sauf animation horizontale */
+    .dropdown {
+        position: static;
+        opacity: 1;
+        max-height: none;
+        transform: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-left: 15px;
+        padding-top: 5px;
+    }
+
+    /* Animation du menu */
+    @keyframes fadeInMenu {
+        from {
+            opacity: 0;
+            transform: translate(-50%, 10px);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+    }
+}
+
+@media(max-width: 1000px) {
+    .program-grid,
+    .campus-grid,
+    .news-grid,
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .program-grid,
+    .campus-grid,
+    .news-grid,
+    .why-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+}
+
+
+/* ===== Page d’inscription ===== 
+
+
+#Inscription-body{
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: 160vh;
+    background: url('images/ingm.jpg');
+    background-position: center;
+    background-size: 250vh;
+}
+
+.Inscription-section{
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    height: 150%;
+    width: 480px;
+    border-radius: 20px;
+    color: white;
+}
+
+H1{
+    text-align: center;
+    margin-bottom: 7%;
+}
+
+
+.case > .input-nom ,.input-prenom,.date-de-naissance,.adress,.lieu-de-residance,.matricule,.niveau,.departement,.specialité,.input-email,.input-id,.input-mdp,.input-mdp2{
+    position: relative; 
+    width: 100%;
+    margin-bottom:15px;
+}
+.case > .input-nom input ,.input-prenom input,.date-de-naissance input,.adress input,.matricule input,.input-email input,.input-id input,.input-mdp input,.input-mdp2 input{
+    width:90%;
+    height:40px;
+    margin-top:5px;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, 0.2);
+    color:white;
+    padding-right: 60px;
+    padding-left: 20px;
+}
+.case > .input-nom i,.input-prenom i,.date-de-naissance i,.adress i,.matricule i,.input-email i,.input-id i{
+position: absolute;
+    top:55%;
+    right:50px;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    width:45px;
+}
+.case > .input-mdp i,.input-mdp2 i{
+    position: absolute;
+    top:35%;
+    right: 47px;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    width:52px;
+}
+
+.case > .lieu-de-residance select,.niveau select,.departement select,.specialité select{
+    width:80%;
+    height:40px;
+    margin-top:5px;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, 0.2);
+    color:white;
+    padding-left: 30px;
+    padding-right: 10%;
+}
+
+.case > .lieu-de-residance i,.niveau i,.departement i,.specialité i{
+    position:absolute;
+    top:55%;
+    right: 110px;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+    width:45px;
+
+}
+
+.conditions {
+    margin-top: 7%;
+    text-align: center;
+}
+
+#Inscription-btn{
+    justify-content: center;
+    height: 3%;
+    width: 30%;
+    border-radius: 50px;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255,0.3);
+}
+.btn-register{
+    
+    margin-top: 7%;
+    margin-left: 35%;
+}
+
+.already-account{
+     margin-top: 7%;
+    text-align: center;
+}
+
+.conditions a{
+    color:white;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.5s;
+}
+.already-account a{
+    color:white;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.5s;
+}
+.conditions a:hover,.already-account a:hover{
+    color:blue
+}
+*/
+
+/*========= body of login page ========= 
+
+#Login-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('images/ingm.jpg');
+    background-position: center;
+    background-size: cover;
+    
+}
+.Login-section{
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    width: 500px;
+    border-radius: 20px;
+
+   
+}
+section h1{
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#Retour i{
+  position: fixed;
+  margin-left: 1px;
+  margin-top: -10%;
+}
+
+
+.input-id{
+    width: 100%;
+    position: relative;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    
+}
+  
+.input-id i {
+    position: absolute;
+    top:50%;
+    right:15px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.2);
+    width:45px;
+    
+}
+.input-mdp i {
+    position: absolute;
+    top: 25px;
+    right: 47px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.2);
+    width:52px;
+}
+    
+    
+.input-id input, .input-mdp input{
+    width:100%;
+    padding:10px;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, 0.2);
+    color:white;
+    padding-right: 60px;
+    padding-left: 20px;
+}
+input::placeholder{
+    color: rgba(255, 255, 255, 0.5)
+    
+
+}
+.input-mdp{
+    width: 100%;
+    margin-left: 5%;
+    position: relative;
+    margin-bottom: 20px;
+}
+.mdp-forget{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size:15px;
+}
+.mdp-forget a{
+    color: white;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.mdp-forget a:hover{
+    color:#095ae7;
+    text-decoration: underline;}
+
+#Login-button{
+   width:100%;
+   padding:10px;
+   border-radius: 25px;
+   background-color:rgba(255, 255, 255, 0.2);
+   color:white;
+   font-size: 16px ;
+   background:transparent;
+   outline:none;
+   border:2px solid rgba(255, 255, 255, 0.2);
+   cursor:pointer;
+}
+#Login-button:hover{
+    background-color: rgba(255, 255, 255, 0.984);
+    color:#090909;
+    font-weight: bold;
+}
+
+.new-compte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-left: 25%;
+    margin-top: 20px;
+    color:#f0f1f3;
+}
+.new-compte p{
+  text-align: center;
+  margin-left: -10%;
+  font-size: 20px;
+}
+
+.new-compte a{
+    color: #FFF;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.new-compte a:hover{
+    color:#095ae7;
+    text-decoration: underline;
+}
+*//*========= FIn ========= */
