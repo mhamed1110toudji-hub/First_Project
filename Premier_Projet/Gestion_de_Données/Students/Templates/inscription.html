@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+
+  <!-- Static CSS  Django-->
+ <link rel="stylesheet" href="{% static 'css/Login-inscription.css' %}">
+ <link rel="icon" type="png" href="{% static 'images/ingm4K.png' %}">
+
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/5ec575d54c.js" crossorigin="anonymous"></script>
+</head>
+<body id="Inscription-body">
+  <style>
+#Inscription-body {
+    background-image: url("{% static 'images/ingm.jpg' %}");
+}
+</style>
+
+  <section class="Inscription-section">
+    <form method="post" action="{% url 'inscription' %}">
+      {% csrf_token %}
+
+      <h1>Créer un Compte</h1>
+      <img src="{% static 'images/ingm4K.png' %}" alt="logo-ingm">
+
+      <a id="Retour" href="{% url 'accueil' %}">
+        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+      </a>
+
+      <div class="case">
+        <div class="input-nom">
+          <input id="Nom-complet" type="text" name="nom" placeholder="Nom complet..." style="text-transform: capitalize;" required>
+          <i class="fa-regular fa-user"></i>
+        </div>
+
+        <div class="input-prenom">
+          <input id="Prenom-complet" type="text" name="prenom" placeholder="Prénom complet..." style="text-transform: capitalize;" required>
+          <i class="fa-regular fa-user"></i>
+        </div>
+
+        <div class="date-de-naissance">
+          <input type="date" min="1975-01-01" max="2010-01-01" name="date_naissance" required>
+          <i class="fa-solid fa-cake-candles" style="color: #f8f6f6;"></i>
+        </div>
+
+        <div class="adress">
+          <input id="Adress-complet" type="text" name="adresse" placeholder="Votre Adresse..." style="text-transform: capitalize;" required>
+          <i class="fa-solid fa-location-dot" style="color: #fefcfc;"></i>
+        </div>
+
+        <div class="lieu-de-residance">
+          <select id="Wilaya-dz" name="wilaya" required>
+            <option value="">-- Sélectionnez votre wilaya --</option>
+            <option value="Adrar">Adrar</option>
+<option value="Chlef">Chlef</option>
+<option value="Laghouat">Laghouat</option>
+<option value="Oum El Bouaghi">Oum El Bouaghi</option>
+<option value="Batna">Batna</option>
+<option value="Béjaïa">Béjaïa</option>
+<option value="Biskra">Biskra</option>
+<option value="Béchar">Béchar</option>
+<option value="Blida">Blida</option>
+<option value="Bouira">Bouira</option>
+<option value="Tamanrasset">Tamanrasset</option>
+<option value="Tébessa">Tébessa</option>
+<option value="Tlemcen">Tlemcen</option>
+<option value="Tiaret">Tiaret</option>
+<option value="Tizi Ouzou">Tizi Ouzou</option>
+<option value="Alger">Alger</option>
+<option value="Djelfa">Djelfa</option>
+<option value="Jijel">Jijel</option>
+<option value="Sétif">Sétif</option>
+<option value="Saïda">Saïda</option>
+<option value="Skikda">Skikda</option>
+<option value="Sidi Bel Abbès">Sidi Bel Abbès</option>
+<option value="Annaba">Annaba</option>
+<option value="Guelma">Guelma</option>
+<option value="Constantine">Constantine</option>
+<option value="Médéa">Médéa</option>
+<option value="Mostaganem">Mostaganem</option>
+<option value="MSila">MSila</option>
+<option value="Mascara">Mascara</option>
+<option value="Ouargla">Ouargla</option>
+<option value="Oran">Oran</option>
+<option value="El Bayadh">El Bayadh</option>
+<option value="Illizi">Illizi</option>
+<option value="Bordj Bou Arreridj">Bordj Bou Arreridj</option>
+<option value="Boumerdès">Boumerdès</option>
+<option value="El Tarf">El Tarf</option>
+<option value="Tindouf">Tindouf</option>
+<option value="Tissemsilt">Tissemsilt</option>
+<option value="El Oued">El Oued</option>
+<option value="Khenchela">Khenchela</option>
+<option value="Souk Ahras">Souk Ahras</option>
+<option value="Tipaza">Tipaza</option>
+<option value="Mila">Mila</option>
+<option value="Aïn Defla">Aïn Defla</option>
+<option value="Naâma">Naâma</option>
+<option value="Aïn Témouchent">Aïn Témouchent</option>
+<option value="Ghardaïa">Ghardaïa</option>
+<option value="Relizane">Relizane</option>
+<option value="El M'Ghair">El M'Ghair</option>
+<option value="El Meniaa">El Meniaa</option>
+<option value="Ouled Djellal">Ouled Djellal</option>
+<option value="Bordj Badji Mokhtar">Bordj Badji Mokhtar</option>
+<option value="Béni Abbès">Béni Abbès</option>
+<option value="Timimoun">Timimoun</option>
+<option value="Touggourt">Touggourt</option>
+<option value="Djanet">Djanet</option>
+<option value="In Salah">In Salah</option>
+<option value="In Guezzam">In Guezzam</option>
+           
+          </select>
+          <i class="fa-solid fa-location-dot" style="color: #fdfcfc;"></i>
+        </div>
+
+        <div class="matricule">
+          <input id="Matricule-complet" type="text" name="matricule" pattern="\d{9}" maxlength="9" minlength="9" placeholder="Votre Matricule..." required>
+          <i class="fa-solid fa-id-card" style="color: #fcfcfc;"></i>
+        </div>
+
+        <div class="niveau">
+          <select name="level" id="Niveau-etude" required>
+            <option value="">-- Sélectionnez votre Niveau --</option>
+            <option value="L1">L1</option>
+            <option value="L2">L2</option>
+            <option value="L3">L3</option>
+            <option value="M1">M1</option>
+            <option value="M2">M2</option>
+          </select>
+          <i class="fa-solid fa-user-graduate" style="color: #fdfbfb;"></i>
+        </div>
+
+        <div class="departement">
+          <select id="Departement-complet" name="departement">
+            <option value="">-- Sélectionnez un département --</option>
+            <option value="Génie Civil">Génie Civil</option>
+            <option value="Génie Électrique">Génie Électrique</option>
+            <option value="Génie Mécanique">Génie Mécanique</option>
+          </select>
+          <i class="fa-solid fa-school" style="color: #f9f8f8;"></i>
+        </div>
+
+        <div class="specialité">
+          <select id="Specialité-complet" name="specialite">
+            <option value="">-- Sélectionnez une spécialité --</option>
+            <optgroup label="Génie Électrique">
+              <option value="Électrotechnique">Électrotechnique</option>
+              <option value="Électronique">Électronique</option>
+              <option value="Automatique">Automatique</option>
+              <option value="Réseaux et Télécommunications<">Réseaux et Télécommunications</option>
+              <option value="Télécomatique">Télécomatique</option>
+              <option value="Informatique industrielle">Informatique industrielle</option>
+            </optgroup>
+            <optgroup label="Génie Mécanique">
+              <option value="Conception et fabrication mécanique">Conception et fabrication mécanique</option>
+              <option value="Maintenance industrielle">Maintenance industrielle</option>
+            </optgroup>
+            <optgroup label="Génie Civil">
+              <option value="Génie des structures">Génie des structures</option>
+            </optgroup>
+          </select>
+          <i class="fa-solid fa-graduation-cap" style="color: #fcfbfb;"></i>
+        </div>
+
+        <div class="input-email">
+          <input type="email" name="email" placeholder="Adresse e-mail..." required>
+          <i class="fa-regular fa-envelope"></i>
+        </div>
+
+        <div class="input-id">
+          <input id="Id-complet" name="username" type="text"  placeholder="Nom d'utilisateur..." required>
+          <i class="fa-solid fa-id-badge"></i>
+        </div>
+
+        <div class="input-mdp">
+          <input type="password" name="password" placeholder="Mot de passe..." required>
+          <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <div class="input-mdp2">
+          <input type="password" name="confirm_password" placeholder="Confirmer le mot de passe..." required>
+          <i class="fa-solid fa-lock"></i>
+        </div>
+      </div>
+
+      <div class="conditions">
+        <label>
+          <input type="checkbox" required> J’accepte Les 
+          <a href="#">Conditions D’utilisation</a>
+        </label>
+      </div>
+
+      <button id="Inscription-btn" type="submit" class="btn-register">S’inscrire</button>
+
+      <div class="already-account">
+        <p>Déjà un Compte ? <a href="{% url 'login' %}">Se Connecter</a></p>
+      </div>
+    </form>
+  </section>
+
+  <!-- JS -->
+  <script src="{% static 'js/inscription.js' %}"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/Login-inscription.css' %}">
+    <script src="https://kit.fontawesome.com/5ec575d54c.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="png" href="{% static 'images/ingm4K.png' %}">
+</head>
+
+<style>
+#Login-body {
+    background-image: url("{% static 'images/ingm.jpg' %}");
+}
+</style>
+
+<body id="Login-body">
+
+    <section class="Login-section">
+        <!-- IMPORTANT : formulaire Django -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <h1>Connexion</h1>
+
+            <img src="{% static 'Images/ingm4K.png' %}" alt="logo INGM" id="logo-Login">
+
+            <a id="Retour" href="{% url 'accueil' %}">
+                <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+            </a>
+
+            <div class="input-id">
+                <input type="text" name="username" placeholder="ID D'utilisateur......." required>
+                <i class="fa-regular fa-user fa-beat-fade fa-lg" style="color: #ffffff;"></i>
+            </div>
+
+            <div class="input-mdp">
+                <input type="password" name="password" placeholder="Mot de passe......." required>
+                <i class="fa-solid fa-lock fa-beat-fade fa-lg" style="color: #ffffff;"></i>
+            </div>
+
+            <div class="mdp-forget">
+                <label><input type="checkbox" id="SSDM"> Se Souvenir de moi</label>
+                <a href="#">Mot de passe oublié ?</a>
+            </div>
+
+            <button id="Login-button" type="submit" class="cnx-button"> Se Connecter </button>
+
+            <div class="new-compte">
+                <p id="no-compte">Pas de Compte ?
+                    <a id="insc" href="{% url 'inscription' %}">Inscription</a>
+                </p>
+            </div>
+
+            <!-- affichage erreurs -->
+            {% if messages %}
+                <div class="error">
+                {% for message in messages %}
+                    <p style="color:red;">{{ message }}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </form>
+    </section>
+
+    <script src="{% static 'js/Login.js' %}"></script>
+
+</body>
+</html>
