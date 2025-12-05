@@ -33,13 +33,17 @@
             </a>
 
             <div class="input-id">
-                <input type="text" name="username" placeholder="ID D'utilisateur......." required>
-                <i class="fa-regular fa-user fa-beat-fade fa-lg" style="color: #ffffff;"></i>
+                <div class="input-wrapper">
+                    <input type="text" name="username" placeholder="ID D'utilisateur......." required>
+                    <i class="fa-regular fa-user fa-beat-fade fa-lg" style="color: #ffffff;"></i>
+                </div>
+                <p id="error-username" class="error-message"></p>
             </div>
 
             <div class="input-mdp">
                 <input type="password" name="password" placeholder="Mot de passe......." required>
                 <i class="fa-solid fa-lock fa-beat-fade fa-lg" style="color: #ffffff;"></i>
+                <p id="error-password" class="error-message"></p>
             </div>
 
             <div class="mdp-forget">
@@ -54,19 +58,22 @@
                     <a id="insc" href="{% url 'inscription' %}">Inscription</a>
                 </p>
             </div>
+             </form>
 
             <!-- affichage erreurs -->
-            {% if messages %}
-                <div class="error">
-                {% for message in messages %}
-                    <p style="color:red;">{{ message }}</p>
-                {% endfor %}
-                </div>
+            
+                {% if messages %}
+            <div id="messages" class="error">
+            {% for message in messages %}
+                <p >{{ message }}</p>
+            {% endfor %}
+             </div>
             {% endif %}
-        </form>
+
+       
     </section>
 
-    <script src="{% static 'js/Login.js' %}"></script>
+    <script src="{% static 'js/login.js' %}"></script>
 
 </body>
 </html>

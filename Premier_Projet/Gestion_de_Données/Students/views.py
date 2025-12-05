@@ -1,24 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
 from .models import Student
-from django.contrib.auth import logout
-
-# ============================
-# Accueil
-# ============================
-def accueil(request):
-    return render(request, "accueil.html")
 
 
-# ============================
-# Inscription
-# ============================
 def inscription(request):
     if request.method == "POST":
         nom = request.POST.get("nom")
         prenom = request.POST.get("prenom")
+        genre = request.POST.get("genre")
         date_naissance = request.POST.get("date_naissance")
         adresse = request.POST.get("adresse")
         wilaya = request.POST.get("wilaya")
@@ -29,26 +17,18 @@ def inscription(request):
         email = request.POST.get("email")
         username = request.POST.get("username")
         password = request.POST.get("password")
+        confirm_password = request.POST.get("confirm_password")
 
-        # Vérifier si username ou email existent
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "Ce nom d'utilisateur existe déjà.")
-            return render(request, "inscription.html")
-        if User.objects.filter(email=email).exists():
-            messages.error(request, "Cet email est déjà utilisé.")
-            return render(request, "inscription.html")
+        # Vérification des mots de passe
+        if password != confirm_password:
+            # Plus de messages Django → on renvoie un signal via GET
+            return redirect("/inscription/?error=password")
 
-        # ⚡ Créer l'utilisateur Django avec mot de passe hashé
-        user = User.objects.create_user(
-            username=username,
-            email=email,
-            password=password
-        )
-
-        # Enregistrer les infos supplémentaires dans Student
+        # Création utilisateur dans MySQL
         Student.objects.create(
             nom=nom,
             prenom=prenom,
+            genre=genre,
             date_naissance=date_naissance,
             adresse=adresse,
             wilaya=wilaya,
@@ -57,35 +37,54 @@ def inscription(request):
             departement=departement,
             specialite=specialite,
             email=email,
-            username=username
+            username=username,
+            password=password  # NON HASHÉ, comme tu veux
         )
-
-        # Connecter automatiquement l'utilisateur
-        login(request, user)
-        return redirect("accueil")
+        
+        return redirect("/login/?success=1")
 
     return render(request, "inscription.html")
 
 
-# ============================
-# Login
-# ============================
-def login_view(request):
+
+def login(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
 
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)  # Crée la session
-            return redirect("accueil")
-        else:
-            messages.error(request, "Identifiants incorrects")
+        # Vérifie si l'utilisateur existe
+        try:
+            student = Student.objects.get(username=username)
+        except Student.DoesNotExist:
+            return redirect("/login/?error=username")
+
+        # Vérifie le mot de passe
+        if password != student.password:
+            return redirect("/login/?error=password")
+
+        # Si OK → connexion
+        request.session["student_id"] = student.id
+        request.session["username"] = student.username
+        request.session["genre"] = student.genre
+
+        return redirect("accueil")
 
     return render(request, "login.html")
 
 
 
-def logout_view(request):
-    logout(request)
-    return redirect('login')  # après déconnexion → page login
+def logout(request):
+    request.session.flush()
+    return redirect("accueil")
+
+
+def accueil(request):
+    username = request.session.get("username")
+    genre = request.session.get("genre")
+
+    return render(request, "accueil.html", {
+        "username": username,
+        "genre": genre
+    })
+
+

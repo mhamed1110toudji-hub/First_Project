@@ -1,55 +1,19 @@
+console.log("LOGIN.JS EST CHARGÉ");
+
 
 document.addEventListener('DOMContentLoaded', function() {
-        let input = document.querySelector('.input-mdp input');
-       let icon = document.querySelector('.input-mdp .fa-lock');
-        
-       
-        
-        icon.classList.add('fa-lock');
-        
-        // Ajouter l'événement click sur l'icône
-       icon.addEventListener('click', function() {
-           if (input.type === "password") {
-                input.type = "text";
-                icon.classList.remove('fa-lock');
-                icon.classList.add('fa-lock-open');
-            } else {
-                input.type = "password";
-                icon.classList.remove('fa-lock-open');
-                icon.classList.add('fa-lock');
-            }
-        });
-    });
+    const errorUsername = document.getElementById("error-username");
+    const errorPassword = document.getElementById("error-password");
 
+    // Lire les paramètres d'erreur dans l'URL
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get("error");
 
-    const inputid = document.querySelector('input[type ="text"]');
-   const inputMdp = document.querySelector('input[type ="password"]');
+    if (error === "username") {
+        errorUsername.textContent = "❌ Nom d’utilisateur incorrect";
+    }
 
-    const form = document.querySelector('Form');
-    console.log(form);
-
-    let ID_Utilisateur = " ";
-    let MDP_Utilisateur = " ";
-
-    inputid.addEventListener('input',(e)=> {
-           ID_Utilisateur = e.target.value;
-    })
-    inputMdp.addEventListener('input',(e)=>{
-         MDP_Utilisateur = e.target.value;
-    });
-
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        
-       
-        
-
-        console.log(SSDM.checked)
-    
-    
-    })
-
-
-
-    
-// appliquer automatiquement
+    if (error === "password") {
+        errorPassword.textContent = "❌ Mot de passe incorrect";
+    }
+});

@@ -45,23 +45,29 @@ section h1{
 }
 
 
-.input-id{
-    width: 100%;
+.input-id .input-wrapper {
     position: relative;
-    margin-left: 5%;
-    margin-bottom: 20px;
-    
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
-  
+
+.input-id input {
+    width: 100%;
+    margin-left: 5%;
+    padding-right: 45px; /* espace pour l'icône */
+    box-sizing: border-box;
+}
+
 .input-id i {
     position: absolute;
-    top:50%;
-    right:15px;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.2);
-    width:45px;
-    
+    right: 150px;
+    margin-right: -5%;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
 }
+
+
 .input-mdp i {
     position: absolute;
     top: 25px;
@@ -154,6 +160,13 @@ input::placeholder{
     text-decoration: underline;
 }
 
+#error-username, #error-password {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0.2px;
+    margin-left: 5%;
+    display: block;
+}
 
 
 
@@ -212,6 +225,20 @@ img {
     padding-right: 60px;
     padding-left: 20px;
 }
+#Genre-complet{
+    width : 80%;
+    height:40px;    
+    border :2px solid rgba(255, 255, 255, 0.2);
+    background :transparent;
+    outline: none;
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    margin-top:5px;
+    margin-bottom : 15px;
+    color :white;
+    padding-left :30px;
+}
+    
 .case > .input-nom i,.input-prenom i,.date-de-naissance i,.adress i,.matricule i,.input-email i,.input-id i{
 position: absolute;
     top:55%;
@@ -227,6 +254,12 @@ position: absolute;
     transform: translateY(-50%);
     color: rgb(255, 255, 255);
     width:52px;
+}
+#gender{
+    position: absolute;
+    right: 150px; ;
+    top: 20.7%;
+    transform: translateY(-50%);
 }
 
 .case > .lieu-de-residance select,.niveau select,.departement select,.specialité select{

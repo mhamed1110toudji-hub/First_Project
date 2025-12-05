@@ -22,7 +22,7 @@
 </style>
 
   <section class="Inscription-section">
-    <form method="post" action="{% url 'inscription' %}">
+    <form method="POST" action="{% url 'inscription' %}">
       {% csrf_token %}
 
       <h1>Créer un Compte</h1>
@@ -41,6 +41,15 @@
         <div class="input-prenom">
           <input id="Prenom-complet" type="text" name="prenom" placeholder="Prénom complet..." style="text-transform: capitalize;" required>
           <i class="fa-regular fa-user"></i>
+        </div>
+         
+        <div class="genre">
+          <select id="Genre-complet"  name="genre" required>
+          <option value="">-- Sélectionnez votre genre --</option>
+          <option value="Masculin">Masculin</option>
+          <option value="Feminin">Feminin</option>
+          </select>
+          <i id="gender" class="fa-solid fa-mars-and-venus" style="color: #ffffff;"></i>
         </div>
 
         <div class="date-de-naissance">
@@ -205,7 +214,7 @@
   </section>
 
   <!-- JS -->
-  <script src="{% static 'js/inscription.js' %}"></script>
+  <!--script src="{% static 'js/inscription.js' %}"></script-->
 
 
 

@@ -4,10 +4,11 @@ from django.db import models
 class Student(models.Model):
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
+    genre = models.CharField(max_length=20, default="Masculin")
     date_naissance = models.DateField()
     adresse = models.CharField(max_length=255)
     wilaya = models.CharField(max_length=50)
-    matricule = models.CharField(max_length=9, unique=True)
+    matricule = models.CharField(max_length=10, unique=True)
     level = models.CharField(max_length=10)
     departement = models.CharField(max_length=50)
     specialite = models.CharField(max_length=100)
